@@ -4,6 +4,8 @@
 #include "renderer.h"
 #include<vector>
 #include <random>
+#include <fstream>
+#include <string>
 
 int main() {
   char difficultyLevel;
@@ -43,5 +45,28 @@ int main() {
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
+
+  // Writing Best Score to the file
+  int score_from_file;
+  std::ifstream file("../Last_Best_Score.txt");
+  std::string _;
+  if (file.good()) {  // Check whether file exists
+    file >> _ >> _ >> _ >> _ >> score_from_file;    // Check previous score in file
+    std::cout << "wah : " << score_from_file << std::endl;
+    if (score_from_file < game.GetScore()) {  // Check if the new score is better than last best
+      std::ofstream updated_file;
+      updated_file.open("../Last_Best_Score.txt", std::ofstream::out | std::ofstream::trunc);   // Remove content of file
+      updated_file << "Your Last Best Score: "<< game.GetScore() << "\n"; // New score in file
+      updated_file.close();
+      std::cout << "New score: " << game.GetScore() << " "<< "Previous score: " << score_from_file << std::endl;
+    }
+  } else {
+      std::ofstream file;
+      file.open("../Last_Best_Score.txt");  // Create file
+      file << "Your Last Best Score: "<< game.GetScore() << "\n";
+      file.close();
+      std::cout << "File Last_Best_Score created: " << std::endl;
+  }
+  
   return 0;
 }
