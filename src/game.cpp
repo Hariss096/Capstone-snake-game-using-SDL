@@ -1,9 +1,11 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include <vector>
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : snake(grid_width, grid_height),
+Game::Game(std::size_t grid_width, std::size_t grid_height, 
+          std::vector<int> &rand_obstacle_x, std::vector<int> &rand_obstacle_y)
+    : snake(grid_width, grid_height, rand_obstacle_x, rand_obstacle_y),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width)),
       random_h(0, static_cast<int>(grid_height)) {

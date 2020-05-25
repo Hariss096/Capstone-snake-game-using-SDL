@@ -1,6 +1,7 @@
 #include "snake.h"
 #include <cmath>
 #include <iostream>
+#include <algorithm>
 
 void Snake::Update() {
   SDL_Point prev_cell{
@@ -55,9 +56,21 @@ void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) 
     size++;
   }
 
-  // Check if the snake has died.
+  // Check if the snake has died by colliding on itself.
   for (auto const &item : body) {
     if (current_head_cell.x == item.x && current_head_cell.y == item.y) {
+      alive = false;
+    }
+  }
+
+ // Check if the snake has died by colliding with obstacle.
+ auto itrx = std::find(rand_obstacle_x.begin(), rand_obstacle_x.end(), current_head_cell.x);
+ auto itry = std::find(rand_obstacle_y.begin(), rand_obstacle_y.end(), current_head_cell.y);
+
+  if (itrx != rand_obstacle_x.end() && itry != rand_obstacle_y.end()) {
+    auto idxx = std::distance(rand_obstacle_x.begin(), itrx);
+    auto idxy = std::distance(rand_obstacle_y.begin(), itry);
+    if (idxx == idxy) {
       alive = false;
     }
   }
