@@ -37,7 +37,17 @@ With increasing difficulty, number of obstacles(red) increase as shown in pictur
 ## Criterias met
 
 1. The project demonstrates an understanding of C++ functions and control structures.
+- for loop in src/renderer.cpp (68-75)
+- map data stucture in main.cpp(10-13)
+- 2 vectors in main.cpp(21-22) that are used later to search inside these vectors(x and y coordinates) of obstacles to check whether the head of snake is at the obstacle (snake (67-68, 71-72)
 2. The project accepts user input and processes the input.
+- user input to build obstacles, data flow: 
+  - from main(14-31, 41) -> game.cpp(6-8) -> snake.cpp(66-76) and also 
+  - from main(39) -> renderer.cpp(8-12, 16-19, 51, 55, 56))
+games.cpp takes refrences of x and y coordinates of obstacle vectors.
 3. The project reads data from a file and process the data, or the program writes data to a file.
+Reads best score from text file, if the file doesn't exist, it creates one and stores the latest scores. Code in main(48-70)
 4. The project uses Object Oriented Programming techniques.
+Sysinfo.h header that is used in main(12-13) to print OS and number of CPU cores in which game is running
 5. Classes use appropriate access specifiers for class members.
+In Sysinfo.h(10-21) which contains public and private variable/functions of class Sysinfo
