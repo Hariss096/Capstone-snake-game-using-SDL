@@ -13,13 +13,10 @@ The code for this repo was inspired by [this](https://codereview.stackexchange.c
 User is asked to choose the difficulty level before the game is started. 
 With increasing difficulty, number of obstacles(red) increase as shown in pictures below.
 
-Difficulty level - Easy:
 <img src="snake_difficulty_easy.JPG"/>
 
-Difficulty level - Medium:
 <img src="snake_difficulty_medium.JPG"/>
 
-Difficulty level - Hard:
 <img src="snake_difficulty_hard.JPG"/>
 
 ## Dependencies for Running Locally
