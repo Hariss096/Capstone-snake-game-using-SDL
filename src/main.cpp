@@ -6,8 +6,11 @@
 #include <random>
 #include <fstream>
 #include <string>
+#include <sysinfo.h>
 
 int main() {
+  Sysinfo stats;
+  stats.printOS();
   char difficultyLevel;
   std::map<char, int> dlevel;
   dlevel['e'] = 5;
@@ -18,7 +21,13 @@ int main() {
   std::cout << "Medium (Press m) " << std::endl;
   std::cout << "Hard (Press h) " << std::endl;
   std::cin >> difficultyLevel;
-  std::cout << difficultyLevel << std::endl;
+  if (dlevel.count(difficultyLevel)){
+    std::cout << difficultyLevel << std::endl;
+  } else {
+    std::cout << "Invalid Choice. Please restart the game." << std::endl;
+    exit(0);
+  }
+  
   auto obstacles = dlevel.find(difficultyLevel)->second;
   std::vector<int> rand_obstacle_x;
   std::vector<int> rand_obstacle_y;
