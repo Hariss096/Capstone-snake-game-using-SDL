@@ -9,7 +9,7 @@ The code for this repo was inspired by [this](https://codereview.stackexchange.c
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
-## User Input
+## User's Input
 User is asked to choose the difficulty level before the game is started. 
 With increasing difficulty, number of obstacles(red) increase as shown in pictures below.
 
